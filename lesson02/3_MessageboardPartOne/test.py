@@ -1,4 +1,6 @@
-import requests, random, socket
+import requests
+import random
+import socket
 
 def test_connect():
     '''Try connecting to the server.'''

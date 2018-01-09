@@ -6,7 +6,7 @@ class HelloHandler(hs.BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header('Content-type', 'text/plain; charser=utf-8')
         self.end_headers()
-        self.wfile.write("Hello! HTTP\n".encode('utf-8'))
+        self.wfile.write(self.path[:].encode('utf-8'))
 
 if __name__ == '__main__':
     # Serve on all addresses, port 8000.
