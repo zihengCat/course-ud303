@@ -5,10 +5,17 @@ msg = None
 class MessageHandler(hs.BaseHTTPRequestHandler):
     def do_GET(self):
         html_file = open("./message_board_part_three.html", "r")
+        html_data = html_file.read()
+
+        html_data = \
+        html_data[:html_data.find("<pre>") + len("<pre>")] + \
+        str(msg) + \
+        html_data[html_data.find("</pre>"):]
+
         self.send_response(200)
         self.send_header('Content-type', 'text/html; charset=utf-8')
         self.end_headers();
-        self.wfile.write((html_file.read() + str(msg)).encode('utf-8'))
+        self.wfile.write((html_data).encode('utf-8'))
         html_file.close()
 
     def do_POST(self):
